@@ -21,8 +21,7 @@ const coffeeData = [
 
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
-  return knex('coffee').del()
-    .then(function () {
+  return knex.raw('DELETE FROM "coffee"; ALTER SEQUENCE coffee_id_seq RESTART WITH 4;').then(function () {
       // Inserts seed entries
       return knex('coffee').insert(coffeeData);
     });

@@ -5,10 +5,10 @@ module.exports = {
         return database("coffee");
     },
     read(id){
-        return database("coffee").where("id", id);
+        return database("coffee").where("id", id).first();
     },
     create(coffee){
-        return database("coffee").insert(coffee);
+        return database("coffee").insert(coffee).returning("*");
     },
     update(id, coffee){
         return database("coffee").where("id", id).update(coffee)
